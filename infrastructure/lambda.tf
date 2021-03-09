@@ -3,6 +3,8 @@ resource "aws_lambda_function" "crawlers" {
   function_name = var.lambda_function_name
   role          = aws_iam_role.lambda.arn
   handler       = "lambda_function.handler"
+  memory_size   = 128
+  timeout       = 30
 
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:

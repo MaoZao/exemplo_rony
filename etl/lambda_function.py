@@ -1,5 +1,6 @@
 import boto3
 import urllib.request
+import os
 
 # Constantes
 file_name = "/tmp/titanic.csv"
