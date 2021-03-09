@@ -1,5 +1,5 @@
 resource "aws_iam_role" "glue_role" {
-  name = "GlueCrawlerRole"
+  name = "ExemploRonyGlueCrawlerRole"
 
   assume_role_policy = <<EOF
 {
@@ -25,7 +25,7 @@ EOF
 
 
 resource "aws_iam_policy" "glue_policy" {
-  name        = "AWSGlueServiceRole"
+  name        = "ExemploRonyAWSGlueServiceRole"
   path        = "/"
   description = "Policy for AWS Glue service role which allows access to related services including EC2, S3, and Cloudwatch Logs"
 
@@ -133,7 +133,7 @@ resource "aws_iam_role_policy_attachment" "glue_attach" {
 
 
 resource "aws_iam_role" "lambda" {
-  name = "LambdaRole"
+  name = "ExemploRonyLambdaRole"
 
   assume_role_policy = <<EOF
 {
@@ -160,9 +160,9 @@ EOF
 
 
 resource "aws_iam_policy" "lambda" {
-  name        = "AWSLambdaBasicExecutionRole"
+  name        = "ExemploRonyAWSLambdaBasicExecutionRole"
   path        = "/"
-  description = "Provides write permissions to CloudWatch Logs."
+  description = "Provides write permissions to CloudWatch Logs and S3 buckets"
 
   policy = <<EOF
 {
@@ -174,6 +174,13 @@ resource "aws_iam_policy" "lambda" {
                 "logs:CreateLogGroup",
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
             ],
             "Resource": "*"
         }
