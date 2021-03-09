@@ -1,41 +1,14 @@
-name: Test Crawlers and IaC
+name: Deploy
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [created]
+
 
 jobs:
-  build_test_lambda:
-    name: Build and test Lambda
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-
-    - name: Install dependencies
-      run: |
-        pip install -U pip
-        pip install -r requirements.txt
-        pip install pytest boto3
-    
-    - name: Run tests on lambda function
-      env:
-        BUCKET: "my-bucket"
-        REGION: "us-east-1"
-      run: |
-        python -m pytest
-  
-
-  build_dl:
+  pack_deploy:
     name: Build and deploy DataLake
     runs-on: ubuntu-latest
-    needs: build_test_lambda
     steps:
     - uses: actions/checkout@v2
       
@@ -69,4 +42,5 @@ jobs:
         $COMMAND_IAC init
         $COMMAND_IAC validate
         $COMMAND_IAC plan
+        $COMMAND_IAC apply -auto-approve
         
