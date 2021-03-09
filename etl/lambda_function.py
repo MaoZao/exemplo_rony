@@ -7,7 +7,7 @@ file_name = "/tmp/titanic.csv"
 object_name = "raw-data/titanic/titanic.csv"
 
 def get_data():
-    url = "https://raw.githubusercontent.com/A3Data/hermione/master/hermione/file_text/train.csv"
+    url = "https://raw.githubusercontent.com/neylsoncrepalde/titanic_data_with_semicolon/main/titanic.csv"
     urllib.request.urlretrieve(url, file_name)
     return True
 
