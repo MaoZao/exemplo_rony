@@ -74,20 +74,14 @@ resource "aws_iam_policy" "glue_policy" {
                 "s3:PutObject",
                 "s3:DeleteObject"
             ],
-            "Resource": [
-                "arn:aws:s3:::aws-glue-*/*",
-                "arn:aws:s3:::*/*aws-glue-*/*"
-            ]
+            "Resource": "*"
         },
         {
             "Effect": "Allow",
             "Action": [
                 "s3:GetObject"
             ],
-            "Resource": [
-                "arn:aws:s3:::crawler-public*",
-                "arn:aws:s3:::aws-glue-*"
-            ]
+            "Resource": "*"
         },
         {
             "Effect": "Allow",
