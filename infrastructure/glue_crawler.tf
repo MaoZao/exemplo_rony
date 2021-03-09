@@ -8,7 +8,7 @@ resource "aws_glue_crawler" "raw" {
   role          = aws_iam_role.glue_role.arn
 
   s3_target {
-    path = "s3://${aws_s3_bucket.dl.bucket}/raw-data"
+    path = "s3://${aws_s3_bucket.dl.bucket}/raw-data/titanic"
   }
 
   configuration = <<EOF
