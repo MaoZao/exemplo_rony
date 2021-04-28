@@ -26,3 +26,4 @@ def handler(event, context):
         'statusCode': 200,
         'body': f"Subiu o arquivo {object_name} para o bucket {bucket_name}. E nois que voa!"
     }
+    
