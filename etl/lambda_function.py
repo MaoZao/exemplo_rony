@@ -6,6 +6,7 @@ import os
 file_name = "/tmp/titanic.csv"
 object_name = "raw-data/titanic/titanic.csv"
 
+
 def get_data():
     url = "https://raw.githubusercontent.com/neylsoncrepalde/titanic_data_with_semicolon/main/titanic.csv"
     urllib.request.urlretrieve(url, file_name)
@@ -26,4 +27,3 @@ def handler(event, context):
         'statusCode': 200,
         'body': f"Subiu o arquivo {object_name} para o bucket {bucket_name}. E nois que voa!"
     }
-    
